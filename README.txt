@@ -42,8 +42,9 @@ Microsoft Azure - register an app: https://portal.azure.com/#blade/Microsoft_AAD
 1. Make sure you have Node JS installed and some kind of terminal like cygwin.
 2. Make sure you have a database like mySQL installed.
 3. Run the "database.sql" file in sql/schedule in your database client to set up the database.
+4. Type "npm install" into the terminal to download all necessary modules.
 
-4. Start the application through the terminal with possibly "node scheduler.js"
+5. Start the application through the terminal with possibly "node scheduler.js"
 
 
 // Features
