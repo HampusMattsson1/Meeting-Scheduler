@@ -1,0 +1,47 @@
+<%- include("./../../partials/header2.ejs") %>
+
+<h1 class="title">Edit meeting</h1>
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to edit the meeting</h2>
+<% } else { %>
+
+<form action="../../edit/:id" method="post">
+
+<div class="title">
+<h4>Meeting ID</h4>
+<input type="number" name="id" value="<%= meeting_id %>" readonly>
+</div>
+<br><br>
+
+<h2>
+<table>
+    <tr>
+        <th class="balance_header">Start User</th><th class="balance_header">Start Date</th><th class="balance_header">End Date</th><th class="balance_header">Description</th>
+    </tr>
+        <tr>
+            <td class="balance table"><input type="text" name="user" value="<%= res.start_user %>" readonly></td>
+            <td class="balance table"><input type="text" name="sdate" value="<%= res.start_date %>"></td>
+            <td class="balance table"><input type="text" name="edate" value="<%= res.end_date %>"></td>
+            <td class="balance table"><input type="text" name="text" value="<%= res.text %>"></td>
+        </tr>
+</table>
+</h2>
+<br><br>
+<div class="title">
+    <% if (res.v_meeting == "1") { %>
+        <td><a class="btn btn-success" href="../../v_scheduler/<%= meeting_id %>">Add voting times</a></td>
+        <br><br><br>
+    <% } %>
+
+    <% if (res.v_meeting == "0") { %>
+        <input class="btn btn-primary" type="submit" name="submit" value="Save changes">
+        <br><br><br>
+    <% } %>
+
+</form>
+
+<a class="btn btn-danger" href="/edit/<%= meeting_id %>/delete">DELETE MEETING</a>
+</div>
+
+<% } %>

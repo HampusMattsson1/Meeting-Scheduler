@@ -1,0 +1,25 @@
+<%- include("./../../partials/header.ejs") %>
+
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to schedule meetings</h2>
+<% } else { %>
+
+<div class="middlebox">
+
+<form action="v_scheduler" method="post">
+<h1 class="title">Schedule negotiable meeting</h1>
+<br>
+<div class="form-group">
+    <h4 for="text">Meeting Description</h4>
+    <input type="text" class="form-control" name="text" aria-describedby="Meeting Description">
+</div>
+<br>
+<button type="submit" class="btn btn-primary">Create meeting</button>
+<br><br>
+<h5>When clicking "Create meeting" you get redirected to another page to add times that can be voted on</h5>
+</form>
+</div>
+
+
+<% } %>

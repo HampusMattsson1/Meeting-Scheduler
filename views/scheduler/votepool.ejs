@@ -1,0 +1,33 @@
+<%- include("./../../partials/header2.ejs") %>
+
+<h1 class="title">Votepool</h1>
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to see this votepool if it's yours</h2>
+<% } else { %>
+
+<h3 class="title">Meeting ID: <%= meeting_id %></h3>
+
+<div class="title">
+<a class="btn btn-warning" href="../../vote/<%= meeting_id %>">Vote Page</a>
+</div>
+<br><br>
+
+<h2>
+<table>
+    <tr>
+        <th class="balance_header">Start Date</th><th class="balance_header">End Date</th>
+        <th class="balance_header">Votes</th>
+    </tr>
+    <% for (const votepool of res) { %>
+        <tr>
+            <td class="balance table"><%= votepool.start_date %></td>
+            <td class="balance table"><%= votepool.end_date %></td>
+            <td class="balance table"><%= votepool.votes %></td>
+            <td><a class="btn btn-primary" href="../../votepool/<%= meeting_id %>/<%= votepool.id %>">Finalize time</a></tr>
+        </tr>
+    <% } %>
+</table>
+</h2>
+
+<% } %>

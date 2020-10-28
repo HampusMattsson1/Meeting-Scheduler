@@ -1,0 +1,61 @@
+<%- include("./../../partials/header.ejs") %>
+
+<% if (!user) { %>
+    <h1 class="title">Please log in to see your schedule</h1>
+<% } else { %>
+
+<head>
+	<meta charset="utf-8">
+	<!-- scheduler -->
+	<script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js" 
+		charset="utf-8"></script>
+  <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css" 
+		rel="stylesheet" type="text/css" charset="utf-8">
+	<style>
+		html, body{
+			margin:0px;
+			padding:0px;
+			height:100%;
+			overflow:show;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="scheduler_here" class="dhx_cal_container" 
+		style='width:100%; height:100%;'>
+		<div class="dhx_cal_navline">
+			<div class="dhx_cal_prev_button">&nbsp;</div>
+			<div class="dhx_cal_next_button">&nbsp;</div>
+			<div class="dhx_cal_today_button"></div>
+			<!-- <div class="dhx_cal_date"></div> -->
+			<div class="dhx_cal_tab" name="day_tab"></div>
+			<div class="dhx_cal_tab" name="week_tab"></div>
+			<div class="dhx_cal_tab" name="month_tab"></div>
+		</div>
+		<div class="dhx_cal_header"></div>
+		<div class="dhx_cal_data"></div>
+	</div>
+	<script>
+		// Custom settings
+		scheduler.config.first_hour = 0;
+		scheduler.config.last_hour = 24;
+		scheduler.config.scroll_hour = 6;
+		scheduler.config.readonly = true;
+		scheduler.config.server_utc = true;
+		scheduler.config.multi_day = true;
+
+		// set format of dates in the data source
+		scheduler.config.xml_date="%Y-%m-%d %H:%i";
+		scheduler.init('scheduler_here', new Date(), "week");
+
+		scheduler.load("https://192.168.10.153:3000/data", "json");
+
+		var dp = new dataProcessor("https://192.168.10.153:3000/data");
+		// use RESTful API on the backend
+		dp.setTransactionMode("REST");
+		dp.init(scheduler);
+	</script>
+</body>
+
+<% } %>

@@ -1,0 +1,39 @@
+<%- include("./../../partials/header2.ejs") %>
+
+
+<% if (!user) { %>
+    <h2 class="title">Log in to see the meeting invite</h2>
+<% } else { %>
+
+    <form action="/invite/:id" method="post">
+    <div class="title">
+        <h1>Meeting invite</h1>
+        <br>
+        <h3>Meeting ID</h3>
+        <input type="number" name="id" value="<%= res.id %>" readonly>
+        <br><br>
+        <h2>Meeting specifications:</h2>
+        <h2>
+        <table>
+            <tr>
+                <th class="balance_header">Start User</th><th class="balance_header">Start Date</th><th class="balance_header">End Date</th>
+                <th class="balance_header">Description</th>
+            </tr>
+                <tr>
+                    <td class="balance table"><%= res.start_user %></td>
+                    <td class="balance table"><%= res.start_date %></td>
+                    <td class="balance table"><%= res.end_date %></td>
+                    <td class="balance table"><%= res.text %></td>
+                </tr>
+        </table>
+        </h2>
+        <br><br>
+        <% if (!res.start_date) { %>
+            <td><a class="btn btn-warning" href="../vote/<%= res.id %>">Vote</a></td>
+            <br><br><br>
+        <% } %>
+            <input class="btn btn-success title" type="submit" name="submit" value="Join meeting">
+        </form>
+<% } %>
+
+

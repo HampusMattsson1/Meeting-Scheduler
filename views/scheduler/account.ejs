@@ -1,0 +1,12 @@
+<%- include("./../../partials/header.ejs") %>
+
+<h1 class="title">Account</h1>
+
+<div class="title">
+<% if (!user) { %>
+    <h2>Please log in to see your account</h2>
+<% } else { %>
+    <h2>Name:  <%= user.displayName %>.</h2>
+    <h2>Email: <%= user._json['email'] %></h2>
+<% } %>
+</div>

@@ -1,0 +1,42 @@
+<%- include("./../../partials/header.ejs") %>
+
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to schedule meetings</h2>
+<% } else { %>
+
+<form action="scheduler" method="post">
+<div class="middlebox">
+    <h1 class="title">Schedule a meeting</h1>
+    
+    <div class="form-group">
+        <h4 for="sdate">Meeting Start</h4>
+        <input type="datetime-local" class="form-control" name="sdate" aria-describedby="starting date">
+    </div>
+    <div class="form-group">
+        <h4 for="sdate">Meeting End</h4>
+        <input type="datetime-local" class="form-control" name="edate" aria-describedby="starting date">
+    </div>
+    <div class="form-group">
+        <h4 for="sdate">Meeting Description</h4>
+        <input type="text" class="form-control" name="text" aria-describedby="starting date">
+    </div>
+    <button type="submit" class="btn btn-primary">Schedule meeting</button>
+    </form>
+</div>
+
+    <!-- <div class="title">
+        <form action="scheduler" method="post">
+            <h4>Meeting Start</h4>
+            <input type="datetime-local" name="sdate" value="">
+            <br><br>
+            <h4>Meeting End</h4>
+            <input type="datetime-local" name="edate" value="">
+            <br><br>
+            <h4>Description</h4>
+            <input type="text" name="text" value="">
+            <br><br>
+            <input class="btn btn-primary" type="submit" name="submit" value="Schedule">
+        </form>
+    </div> -->
+<% } %>

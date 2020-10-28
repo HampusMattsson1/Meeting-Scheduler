@@ -1,0 +1,35 @@
+<%- include("./../../partials/header2.ejs") %>
+
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to add meeting times</h2>
+<% } else { %>
+
+    <div class="middlebox">
+        <h1 class="title">Negotiable meeting times</h1>
+
+        <form action="../../v_scheduler/:id" method="post">
+            <h4>Meeting ID</h4>
+            <input type="number" name="id" value="<%= res %>" readonly>
+            <br><br>
+            <h3>Meeting times in total</h3>
+            <input type="number" name="times" value="<%= meeting_times.times %>" readonly>
+            <br><br><br>
+            <h2>Add meeting time</h2>
+            <br>
+            <div class="form-group">
+                <h4 for="sdate">Meeting Start</h4>
+                <input class="form-control" type="datetime-local" name="sdate" value="">
+            </div>
+            <br>
+            <div class="form-group">
+                <h4 for="edate">Meeting End</h4>
+                <input class="form-control" type="datetime-local" name="edate" value="">
+            </div>
+            <br>
+            <input class="btn btn-primary" type="submit" name="submit" value="Add meeting time">
+            <br><br><br>
+        </form>
+    </div>
+
+<% } %>

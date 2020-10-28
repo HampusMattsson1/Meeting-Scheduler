@@ -1,0 +1,41 @@
+<%- include("./../../partials/header.ejs") %>
+
+<h1 class="title">Your started meetings</h1>
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to see your started meetings</h2>
+<% } else { %>
+
+
+<div class="list">
+
+<h2>
+<table>
+    <tr>
+        <th class="balance_header">Start Date</th><th class="balance_header">End Date</th>
+        <th class="balance_header">Description</th>
+    </tr>
+    <% for (const meeting of res) { %>
+        <tr>
+            <td class="balance table"><%= meeting.start_date %></td>
+            <td class="balance table"><%= meeting.end_date %></td>
+            <td class="balance table"><%= meeting.text %></td>
+            <% if (meeting.start_user == user._json['email']) { %>
+                <td class="table">
+                    <div class="balance"><a class="btn btn-warning" href="edit/<%= meeting.id %>">Edit</a><br><br><a class="btn btn-success" href="invite/<%= meeting.id %>">Invite</a>
+                    </div></td>
+            <% } %>
+
+            <% if (!meeting.start_date) { %>
+                <td class="balance table"><a class="btn btn-primary" href="votepool/<%= meeting.id %>">View votes</a></td>
+            <% } %>
+        </tr>
+    <% } %>
+</table>
+</h2>
+
+</div>
+
+<br><br>
+
+<% } %>

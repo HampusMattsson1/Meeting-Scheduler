@@ -1,0 +1,33 @@
+<%- include("./../../partials/header2.ejs") %>
+
+<h1 class="title">Vote on a meeting time</h1>
+
+<% if (!user) { %>
+    <h2 class="title">Please log in to vote</h2>
+<% } else { %>
+
+
+<h4 class="title">Meeting ID: <%= meeting_id %></h4>
+
+<br>
+
+
+<h2>
+<table>
+    <tr>
+        <th class="balance_header">ID</th><th class="balance_header">Start User</th><th class="balance_header">Start Date</th><th class="balance_header">End Date</th>
+    </tr>
+    <% for (const meeting of res) { %>
+        <tr>
+            <td class="balance table"><%= meeting.id %></td>
+            <td class="balance table"><%= meeting.start_user %></td>
+            <td class="balance table"><%= meeting.start_date %></td>
+            <td class="balance table"><%= meeting.end_date %></td>
+            <td><a class="btn btn-success" href="./../../vote/<%= meeting_id %>/<%= meeting.id %>">Vote</a></td>
+        </tr>
+    <% } %>
+</table>
+</h2>
+
+
+<% } %>
