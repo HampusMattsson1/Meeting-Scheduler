@@ -32,7 +32,7 @@ Microsoft Azure - register an app: https://portal.azure.com/#blade/Microsoft_AAD
 6. Paste this into the variable at the top and REPLACE the already existing "hjmownit.onmicrosoft.com"
 
 7. Open scheduler.js and set PORT and IP to whatever your ip and port is
-2. Go in the folder "views", then "scheduler", then open scheme.ejs
+8. Go in the folder "views", then "scheduler", then open scheme.ejs
    Here you have to scroll down to the bottom and change the URL in the scheduler.load(), and change the URL in the variable "dp"
    to what you set in your Azure registration, but it has to end with "/data" instead of "/scheme"
    It should look like this: "https://IP:PORT/data"
